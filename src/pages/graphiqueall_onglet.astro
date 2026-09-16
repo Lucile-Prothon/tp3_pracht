@@ -5,6 +5,7 @@ import * as Plot from "@observablehq/plot";
 import penguins from "../assets/penguins.json";
 import olympians from "../assets/olympians.json";
 import pizzas from "../assets/pizza.json";
+import { Tabs, TabsList, TabsTab, TabsPanel } from 'accessible-astro-components'
 
 
 const penguinsAdelie = penguins.filter(({ species }) => species === "Adelie");
@@ -14,9 +15,9 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
 
 <Layout>
  <nav class="flex flex-wrap gap-2">
-    <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphiqueall">Tous les schémas</a></button>
-    <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphiqueall_onglet">Tous les schémas onglet</a></button>
-    <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/">Schéma Penguins</a></button>
+  <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphiqueall">Tous les schémas</a></button>
+      <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphiqueall_onglet">Tous les schémas onglet</a></button>
+  <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/">Schéma Penguins</a></button>
     <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphique2">Schéma Olympians</a></button>
     <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphique3">Schéma Pizzas</a></button>
   <select class="m-1 rounded border px-3 py-2 bg-green-500" id="species">
@@ -34,12 +35,20 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
 
 
   <h1 class="text-2xl m-2">Tous les schémas</h1>
-<div class="carousel w-full rounded-box">
 
+  <Tabs>
+  <TabsList>
+    <TabsTab id="tab1" controls="panel1" selected>Schéma Penguins</TabsTab>
+    <TabsTab id="tab2" controls="panel2">Schéma Olympians</TabsTab>
+    <TabsTab id="tab3" controls="panel3">Schéma Pizzas</TabsTab>
+    <TabsTab id="tab4" controls="panel4">Schéma Adelie</TabsTab>
+    <TabsTab id="tab5" controls="panel5">Schéma Gentoo</TabsTab>
+    <TabsTab id="tab6" controls="panel6">Schéma Chinstrap</TabsTab>
+  </TabsList>
 
-  <div id="item1" class="carousel-item w-full flex-col">
-    <h2 id="penguins" class="text-2xl m-2">Schéma Penguins</h2>
-    <PlotFigure
+  <TabsPanel id="panel1" labelledby="tab1" selected>
+    <h2>Schéma Penguins</h2>
+        <PlotFigure
       options={{
         marks: [
           Plot.dot(penguins, {
@@ -50,15 +59,10 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
         ],
       }}
     />
-    <div class="flex justify-between mt-4">
-<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
-      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
-    </div>
-  </div>
-
-  <div id="item2" class="carousel-item w-full flex-col">
-    <h2 id="olympians" class="text-2xl m-2">Schéma Olympians</h2>
-    <PlotFigure
+  </TabsPanel>
+  <TabsPanel id="panel2" labelledby="tab2">
+    <h2>Schéma Olympians</h2>
+   <PlotFigure
       options={{
         marks: [
           Plot.dot(olympians, {
@@ -68,33 +72,22 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
         ],
       }}
     />
-    <div class="flex justify-between mt-4">
-<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
-      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
-    </div>
-  </div>
-
-
-  <div id="item3" class="carousel-item w-full flex-col">
-    <h2 id="pizzas" class="text-2xl m-2">Schéma Pizzas</h2>
+  </TabsPanel>
+  <TabsPanel id="panel3" labelledby="tab3">
+    <h2>Schéma Pizzas</h2>
     <PlotFigure
       options={{
         marks: [
           Plot.dot(pizzas, {
-            x: "diameter",
+            x: "size",
             y: "price",
           }),
         ],
       }}
     />
-    <div class="flex justify-between mt-4">
-<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
-      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
-    </div>
-  </div>
-
-  <div id="item4" class="carousel-item w-full flex-col">
-    <h2 id="adelie" class="text-2xl m-2">Schéma Adelie</h2>
+  </TabsPanel>
+    <TabsPanel id="panel4" labelledby="tab4">
+    <h2>Schéma Adelie</h2>
     <PlotFigure
       options={{
         marks: [
@@ -106,15 +99,9 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
         ],
       }}
     />
-    <div class="flex justify-between mt-4">
-<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
-      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
-    </div>
-  </div>
-
-
-  <div id="item5" class="carousel-item w-full flex-col">
-    <h2 id="gentoo" class="text-2xl m-2">Schéma Gentoo</h2>
+  </TabsPanel>
+  <TabsPanel id="panel5" labelledby="tab5">
+    <h2>Schéma Gentoo</h2>
     <PlotFigure
       options={{
         marks: [
@@ -126,15 +113,9 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
         ],
       }}
     />
-    <div class="flex justify-between mt-4">
-<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
-      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
-    </div>
-  </div>
-
- 
-  <div id="item6" class="carousel-item w-full flex-col">
-    <h2 id="chinstrap" class="text-2xl m-2">Schéma Chinstrap</h2>
+  </TabsPanel>
+  <TabsPanel id="panel6" labelledby="tab6">
+    <h2>Schéma Chinstrap</h2>
     <PlotFigure
       options={{
         marks: [
@@ -146,11 +127,6 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
         ],
       }}
     />
-    <div class="flex justify-between mt-4">
-      <a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
-      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
-    </div>
-  </div>
-
-</div>
+  </TabsPanel>
+</Tabs>
 </Layout>
