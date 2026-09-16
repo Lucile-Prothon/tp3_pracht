@@ -1,12 +1,14 @@
 ---
-import PlotFigure from "../components/PlotFigure.astro";
-import Layout from "../layouts/Layout.astro";
+import PlotFigure from "../../components/PlotFigure.astro";
+import Layout from "../../layouts/Layout.astro";
 import * as Plot from "@observablehq/plot";
-import penguins from "../assets/penguins.json";
+import penguins from "../../assets/penguins.json";
+
+const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstrap");
 ---
 
 <Layout>
-  <nav class="flex flex-wrap gap-2">
+    <nav class="flex flex-wrap gap-2">
     <button class="m-1 rounded border px-3 py-2"><a href="/">Schéma Penguins</a></button>
     <button class="m-1 rounded border px-3 py-2"><a href="/graphique2">Schéma Olympians</a></button>
     <button class="m-1 rounded border px-3 py-2"><a href="/graphique3">Schéma Pizzas</a></button>
@@ -15,11 +17,11 @@ import penguins from "../assets/penguins.json";
     <button class="m-1 rounded border px-3 py-2"><a href="/species/Chinstrap">Schéma Chinstrap</a></button>
     <button class="m-1 rounded border px-3 py-2"><a href="/graphiqueall">Tous les schémas</a></button>
   </nav>
-  <h1 class="text-2xl">Schéma Penguins</h1>
+  <h1 class="text-2xl">Chinstrap penguins</h1>
   <PlotFigure
     options={{
       marks: [
-        Plot.dot(penguins, {
+        Plot.dot(penguinsChinstrap, {
           x: "culmen_length_mm",
           y: "culmen_depth_mm",
           stroke: "species",
@@ -27,5 +29,5 @@ import penguins from "../assets/penguins.json";
       ],
     }}
   />
-  <button class="m-1 rounded border px-3 py-2"><a href="/graphique2">Suivant</a></button>
+  <button class="m-1 rounded border px-3 py-2"><a href="/">Suivant</a></button>
 </Layout>
