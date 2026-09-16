@@ -10,11 +10,19 @@ import penguins from "../assets/penguins.json";
     <button class="m-1 rounded border px-3 py-2"><a href="/">Schéma Penguins</a></button>
     <button class="m-1 rounded border px-3 py-2"><a href="/graphique2">Schéma Olympians</a></button>
     <button class="m-1 rounded border px-3 py-2"><a href="/graphique3">Schéma Pizzas</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/species/Adelie">Schéma Adelie</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/species/Gentoo">Schéma Gentoo</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/species/Chinstrap">Schéma Chinstrap</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/graphiqueall">Tous les schémas</a></button>
   </nav>
+<select id="species">
+<option value="Adelie">Adelie</option>
+<option value="Chinstrap">Chinstrap</option>
+<option value="Gentoo">Gentoo</option>
+</select>
+<script>
+document.querySelector("#species")?.addEventListener("change", (evt) => {
+const value = (evt.target as HTMLSelectElement).value;
+location.pathname = "/species/" + value;
+});
+</script>
+
   <h1 class="text-2xl">Schéma Penguins</h1>
   <PlotFigure
     options={{
