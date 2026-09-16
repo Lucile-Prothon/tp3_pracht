@@ -5,15 +5,23 @@ import * as Plot from "@observablehq/plot";
 import pizzas from "../assets/pizza.json";
 ---
 <Layout>
-  <nav class="flex flex-wrap gap-2">
-    <button class="m-1 rounded border px-3 py-2"><a href="/">Schéma Penguins</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/graphique2">Schéma Olympians</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/graphique3">Schéma Pizzas</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/species/Adelie">Schéma Adelie</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/species/Gentoo">Schéma Gentoo</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/species/Chinstrap">Schéma Chinstrap</a></button>
-    <button class="m-1 rounded border px-3 py-2"><a href="/graphiqueall">Tous les schémas</a></button>
+ <nav class="flex flex-wrap gap-2">
+    <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/">Schéma Penguins</a></button>
+    <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphique2">Schéma Olympians</a></button>
+    <button class="bg-green-500 m-1 rounded border px-3 py-2"><a href="/graphique3">Schéma Pizzas</a></button>
+  <select class="m-1 rounded border px-3 py-2 bg-green-500" id="species">
+      <option class="" value="Adelie">Adelie</option>
+      <option class="" value="Chinstrap">Chinstrap</option>
+      <option class="" value="Gentoo">Gentoo</option>
+  </select>
+  <script>
+      document.querySelector("#species")?.addEventListener("change", (evt) => {
+      const value = (evt.target as HTMLSelectElement).value;
+      location.pathname = "/species/" + value;
+      });
+  </script>
   </nav>
+  
   <h1 class="text-2xl">Schéma Pizzas</h1>
 <PlotFigure
           options={{
