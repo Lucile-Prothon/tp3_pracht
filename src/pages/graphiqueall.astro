@@ -6,6 +6,7 @@ import penguins from "../assets/penguins.json";
 import olympians from "../assets/olympians.json";
 import pizzas from "../assets/pizza.json";
 
+
 const penguinsAdelie = penguins.filter(({ species }) => species === "Adelie");
 const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
 const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstrap");
@@ -29,84 +30,125 @@ const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstra
   </script>
   </nav>
 
-  <nav class="flex flex-wrap gap-2 my-4">
-    <a class="m-1 bg-green-500 rounded border px-3 py-2" href="#penguins">Penguins</a>
-    <a class="m-1 bg-green-500 rounded border px-3 py-2" href="#olympians">Olympians</a>
-    <a class="m-1 bg-green-500 rounded border px-3 py-2" href="#pizzas">Pizzas</a>
-    <a class="m-1 bg-green-500 rounded border px-3 py-2" href="#adelie">Adelie</a>
-    <a class="m-1 bg-green-500 rounded border px-3 py-2" href="#gentoo">Gentoo</a>
-    <a class="m-1 bg-green-500 rounded border px-3 py-2" href="#chinstrap">Chinstrap</a>
-  </nav>
 
-  <h1 class="text-2xl">Tous les schémas</h1>
-  <h2 id="penguins" class="text-1xl m-2">Schéma Penguins</h2>
+  <h1 class="text-2xl m-2">Tous les schémas</h1>
+<div class="carousel w-full rounded-box">
+
+
+  <div id="item1" class="carousel-item w-full flex-col">
+    <h2 id="penguins" class="text-2xl m-2">Schéma Penguins</h2>
     <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguins, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-  <h2 id="olympians" class="text-2xl m-2">Schéma Olympians</h2>
-  <PlotFigure
-          options={{
-marks: [
-              Plot.dot(olympians, {
-                x: "height",
-                y: "weight",
-              })
-            ]
-          }}
-        />
+      options={{
+        marks: [
+          Plot.dot(penguins, {
+            x: "culmen_length_mm",
+            y: "culmen_depth_mm",
+            stroke: "species",
+          }),
+        ],
+      }}
+    />
+    <div class="flex justify-between mt-4">
+<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
+      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
+    </div>
+  </div>
+
+  <div id="item2" class="carousel-item w-full flex-col">
+    <h2 id="olympians" class="text-2xl m-2">Schéma Olympians</h2>
+    <PlotFigure
+      options={{
+        marks: [
+          Plot.dot(olympians, {
+            x: "height",
+            y: "weight",
+          }),
+        ],
+      }}
+    />
+    <div class="flex justify-between mt-4">
+<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
+      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
+    </div>
+  </div>
+
+
+  <div id="item3" class="carousel-item w-full flex-col">
     <h2 id="pizzas" class="text-2xl m-2">Schéma Pizzas</h2>
     <PlotFigure
-          options={{
-marks: [
-              Plot.dot(pizzas, {
-                x: "diameter",
-                y: "price",
-              })
-            ]
-          }}
-        />
+      options={{
+        marks: [
+          Plot.dot(pizzas, {
+            x: "diameter",
+            y: "price",
+          }),
+        ],
+      }}
+    />
+    <div class="flex justify-between mt-4">
+<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
+      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
+    </div>
+  </div>
+
+  <div id="item4" class="carousel-item w-full flex-col">
     <h2 id="adelie" class="text-2xl m-2">Schéma Adelie</h2>
     <PlotFigure
-       options={{
-      marks: [
-        Plot.dot(penguinsAdelie, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-      <h2 id="gentoo" class="text-2xl m-2">Schéma Gentoo</h2>
+      options={{
+        marks: [
+          Plot.dot(penguinsAdelie, {
+            x: "culmen_length_mm",
+            y: "culmen_depth_mm",
+            stroke: "species",
+          }),
+        ],
+      }}
+    />
+    <div class="flex justify-between mt-4">
+<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
+      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
+    </div>
+  </div>
+
+
+  <div id="item5" class="carousel-item w-full flex-col">
+    <h2 id="gentoo" class="text-2xl m-2">Schéma Gentoo</h2>
     <PlotFigure
-       options={{
-      marks: [
-        Plot.dot(penguinsGentoo, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-      <h2 id="chinstrap" class="text-2xl m-2">Schéma Chinstrap</h2>
+      options={{
+        marks: [
+          Plot.dot(penguinsGentoo, {
+            x: "culmen_length_mm",
+            y: "culmen_depth_mm",
+            stroke: "species",
+          }),
+        ],
+      }}
+    />
+    <div class="flex justify-between mt-4">
+<a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
+      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
+    </div>
+  </div>
+
+ 
+  <div id="item6" class="carousel-item w-full flex-col">
+    <h2 id="chinstrap" class="text-2xl m-2">Schéma Chinstrap</h2>
     <PlotFigure
-       options={{
-      marks: [
-        Plot.dot(penguinsChinstrap, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
+      options={{
+        marks: [
+          Plot.dot(penguinsChinstrap, {
+            x: "culmen_length_mm",
+            y: "culmen_depth_mm",
+            stroke: "species",
+          }),
+        ],
+      }}
+    />
+    <div class="flex justify-between mt-4">
+      <a href="#item5" class="btn m-10 bg-lime-500 text-white">❮</a>
+      <a href="#item1" class="btn m-10 bg-lime-500 text-white">❯</a>
+    </div>
+  </div>
+
+</div>
 </Layout>
